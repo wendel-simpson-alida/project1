@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Rubik+Dirt&family=Rubik+Marker+Hatch&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Tangerine"
+    />
+    <script src="script.js" defer></script>
+    <title>Capital Countdown</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="top">
+        <div class="title-container">
+          <div class="title-text">Capital Countdown</div>
+          <div class="choice">⬇️ Select either Countries or US States ⬇️</div>
+        </div>
+      </div>
+      <div id="myModalCountries" class="modal">
+        <div class="modal-content">
+          <span class="closeCountries">&times;</span>
+          <div class="description">
+            <div class="description--text">How well do you know the world capitals?</div>
+            <ol class="rules">Rules:
+              <li class ='list-item'>No googling! 😉</li>
+              <li class ='list-item'>Spelling must be correct</li>
+              <li class ='list-item'>Country population must be answered in millions (points awarded for accuracy)</li>
+            </ol>
+            <div class="name--text">⬇️ Enter your username ⬇️
+            <div class = 'textbox'><input class="nameCountry name"></input></div></div>
+            <div id='startCountries' class="start">START</div>
+          </div>
+        </div>
+      </div>
+      <div id="myModalStates" class="modal">
+        <div class="modal-content">
+          <span class="closeStates">&times;</span>
+          <div class="description">
+            <div class="description--text">How well do you know the US state capitals?</div>
+            <ol class="rules">Rules:
+              <li class ='list-item'>No Googling! 😉</li>
+              <li class ='list-item'>Spelling must be correct</li>
+              <li class ='list-item'>State population must be answered in millions (points awarded for accuracy)</li>
+            </ol>
+            <div class="name--text">⬇️ Enter your username ⬇️
+              <div class = 'textbox'><input class="nameState name"></input></div></div>
+            <div id='startStates' class="start">START</div>
+          </div>
+        </div>
+      </div>
+      <div class="left-container">
+        <div id="myBtn--countries" class="btn--big countries">
+          <div class="countries--text">Countries</div>
+        </div>
+        <div class="countriesContainer game hidden">
+          <div>
+            <div id="left-message"></div>
+            <div class="country-name"></div>
+            <img class="flag"  src='/assets/globe.png'/>
+          </div>
+          <div class='guess-container'>
+            <div>
+              <div class='guess capital'>
+                <div>Capital</div>
+                <input class ='input' type = 'text' id = 'capital'/>
+              </div>
+              <div class="guess population" >
+                <div>Population (in millions)</div>
+
+                <input class = 'input 'type = 'number' id = 'population' min = '10' max = '1500' step = '1'/>
+              </div>
+            </div>
+            <div class = 'button-flex'>
+              <button id='menu-button' class = "button">Exit</button>
+              <button id='submit-button' class = "button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right-container">
+        <div id="myBtn--states" class="btn--big states">
+          <div class="states--text">US States</div>
+        </div>
+        <div class="message hidden">Scores and History</div>
+        <div class="score-container hidden">
+          <div class='score-container'>
+            <div>Current Score:</div>
+            <div class = "score" id="score">0</div>
+          </div>
+          <div class='score-container'>
+            <div class="high-score-name">High Score:</div>
+            <div class = "score" id="high-score">0</div>
+          </div>
+        </div>
+        <div class="past-data hidden">
+          <ul class="past-data-list">
+            <!-- <li class ='past-data-list-item'> -->
+              <!-- <div>Country #${this.questionNum}: ${this.country[0]}</div>
+              <div>Capital: ${this.capital[0]}</div> 
+              <div>Population: ${this.population[0]} million</div></li> -->
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <footer>Copyright &copy 2022 by Wendel Simpson</footer>
+  </body>
+</html>

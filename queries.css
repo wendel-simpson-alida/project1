@@ -8,20 +8,16 @@
     grid-row: 3;
     grid-column: 1;
     margin-right: 0em;
-    margin-left: 2em;
+    margin-left: 0.9em;
     padding-left: 2em;
   }
-}
 
-@media (max-width: 38em) {
   .title-container {
     height: 25em;
     width: 50em;
     border-radius: 50em 50em 0.3em 0.3em;
   }
-}
 
-@media (max-width: 38em) {
   .states {
     top: 25.5em;
     left: 25.2em;
@@ -29,21 +25,15 @@
     width: 25em;
     background-position: 0em 6rem;
   }
-}
 
-@media (max-width: 38em) {
   .title-text {
     font-size: 5em;
   }
-}
 
-@media (max-width: 38em) {
   .choice {
     font-size: 1.8em;
   }
-}
 
-@media (max-width: 38em) {
   .countries {
     top: 25.5rem;
     right: 25rem;
@@ -51,53 +41,59 @@
     width: 25rem;
     background-position: -5rem 7rem;
   }
-}
 
-@media (max-width: 38em) {
   .countries--text {
     font-size: 4.5em;
     padding-top: 0rem;
   }
-}
 
-@media (max-width: 38em) {
   .states--text {
     font-size: 4.5em;
     padding-top: 0rem;
   }
-}
 
-@media (max-width: 38em) {
   html {
     font-size: 35%;
   }
-}
 
-@media (max-width: 38em) {
-  body {
-    height: 200rem;
-  }
-}
-
-@media (max-width: 38em) {
   .main {
     grid-template-columns: repeat(1, 1fr);
     height: 100%;
     grid-template-rows: 2fr 1.5fr 1.5fr;
     row-gap: 0rem;
   }
-}
 
-@media (max-width: 38em) {
   .modal-content {
     width: 95%; /* Could be more or less, depending on screen size */
+  }
+
+  body {
+    height: 200rem;
   }
 }
 
 /* Smaller laptops and small viewing areas (between 600 and 1200px)*/
 
-/* @media (min-width: 38em) and (max-width: 75em) {
-  .html {
-    font-size: 30%;
+@media (min-width: 38em) and (max-width: 44em) {
+  html {
+    font-size: 35%;
   }
-} */
+}
+
+@media (min-width: 44em) and (max-width: 50em) {
+  html {
+    font-size: 40%;
+  }
+}
+
+@media (min-width: 50em) and (max-width: 55em) {
+  html {
+    font-size: 45%;
+  }
+}
+
+@media (min-width: 55em) and (max-width: 62em) {
+  html {
+    font-size: 50%;
+  }
+}

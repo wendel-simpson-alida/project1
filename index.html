@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="style.css" rel="stylesheet" />
+    <link href="queries.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Rubik+Dirt&family=Rubik+Marker+Hatch&display=swap"
       rel="stylesheet"
@@ -22,6 +23,12 @@
         <div class="title-container">
           <div class="title-text">Capital Countdown</div>
           <div class="choice">⬇️ Select either Countries or US States ⬇️</div>
+          <div id="myBtn--states" class="btn--big states">
+            <div class="states--text">US States</div>
+          </div>
+          <div id="myBtn--countries" class="btn--big countries">
+            <div class="countries--text">Countries</div>
+          </div>
         </div>
       </div>
       <div id="myModalCountries" class="modal">
@@ -57,9 +64,6 @@
         </div>
       </div>
       <div class="left-container">
-        <div id="myBtn--countries" class="btn--big countries">
-          <div class="countries--text">Countries</div>
-        </div>
         <div class="countriesContainer game hidden">
           <div>
             <div id="left-message"></div>
@@ -86,17 +90,14 @@
         </div>
       </div>
       <div class="right-container">
-        <div id="myBtn--states" class="btn--big states">
-          <div class="states--text">US States</div>
-        </div>
         <div class="message hidden">Scores and History</div>
         <div class="score-container hidden">
           <div class='score-container'>
-            <div>Current Score:</div>
+            <div>Current Score</div>
             <div class = "score" id="score">0</div>
           </div>
           <div class='score-container'>
-            <div class="high-score-name">High Score:</div>
+            <div class="high-score-name">High Score</div>
             <div class = "score" id="high-score">0</div>
           </div>
         </div>

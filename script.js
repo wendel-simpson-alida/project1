@@ -39,6 +39,8 @@ const rightContainer = document.querySelector(".right-container");
 const countriesContainer = document.querySelector(".countriesContainer");
 const startCountries = document.getElementById("startCountries");
 const startStates = document.getElementById("startStates");
+const guessContainer = document.querySelector(".guess-container");
+const flag = document.querySelector(".flag");
 
 class App {
   date = "";
@@ -155,6 +157,18 @@ class App {
     countriesContainer.insertAdjacentHTML("afterbegin", html);
   }
 
+  setEndingImage() {
+    countriesContainer.removeChild(countriesContainer.firstElementChild);
+    const html = `
+          <div>
+            <div class="message" id="left-message">${this.message}</div>
+            <div style="padding-top:3rem" class="country-name">Final Score: ${this.score}, Thanks for playing!</div>
+            <img style="height:35rem;padding-top:5rem"  class="flag"  src='/assets/goodbye.png'/> 
+          </div>
+            `;
+    countriesContainer.insertAdjacentHTML("afterbegin", html);
+  }
+
   setLoadingImage() {
     countriesContainer.removeChild(countriesContainer.firstElementChild);
     const html = `
@@ -212,12 +226,17 @@ class App {
   //Smooth scrolling to the bottom of page
   scrollDown() {
     window.scrollBy(0, -10);
-    leftContainer.scrollIntoView({ behavior: "smooth" });
+    const mediaQuery = window.matchMedia("(min-width: 600px)");
+    if (mediaQuery.matches) {
+      leftContainer.scrollIntoView({ behavior: "smooth", block: "center" });
+    } else {
+      leftContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
 
   //Smooth scrolling to the top of page
   scrollUp() {
-    topContainer.scrollIntoView({ behavior: "smooth" });
+    topContainer.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
   //Sets the high score in the class field
@@ -228,7 +247,9 @@ class App {
       this.highScore = score;
       this.setLocalStorage();
       highScoreText.textContent = this.highScore;
-      highScoreName.textContent = `High Score (${this.name}):`;
+      this.highScore === 0
+        ? (highScoreName.textContent = "High Score")
+        : (highScoreName.textContent = `High Score(${this.name})`);
     }
   }
 
@@ -247,7 +268,7 @@ class App {
     highScoreText.textContent = this.highScore;
     const nameHighScore = JSON.parse(localStorage.getItem("name")) || "";
     highScoreText.textContent = this.highScore;
-    highScoreName.textContent = `High Score (${nameHighScore}):`;
+    highScoreName.textContent = `High Score ${nameHighScore}`;
   }
 
   //Displays the game area
@@ -265,7 +286,6 @@ class App {
     historyMessage.classList.remove("hidden");
     leftContainer.style.backgroundColor = "#e3fafc";
     rightContainer.style.backgroundColor = "#e3fafc";
-    rightContainer.style.border = "3px solid #333333 ";
     submitBtn.classList.remove("hidden");
 
     // hide the 'Select either Countries or States' text
@@ -293,7 +313,7 @@ class App {
     this.message = "";
 
     if (this.roundScore === 4) {
-      this.message = "Wow, 4 points! You sure you weren't cheating?";
+      this.message = "Wow, 4 points! Were ya cheating?";
     } else if (this.roundScore === 3) {
       this.message = "3 points! So impressive!";
     } else if (this.roundScore === 2) {
@@ -301,13 +321,13 @@ class App {
     } else if (this.roundScore === 1) {
       this.message = "1 point, meh - I'm not all that impressed";
     } else if (this.roundScore === 0) {
-      this.message = "eeesh, time to brush up on your geography!";
+      this.message = "Eeesh, time to brush up that geography!";
     } else if (this.roundScore === null) {
-      this.message = `Welcome ${this.name}!`;
+      this.message = `Welcome, ${this.name}!`;
     }
 
     if (this.capital.length === 0) {
-      this.message = `Game Over, ${this.name}, thanks for playing!`;
+      this.message = `Game Over, ${this.name}!`;
       this.flagImg.push("/assets/globe.png");
       this.country.push("Click Exit for Main Menu!");
       this.questionNum = "N/A";
@@ -318,7 +338,7 @@ class App {
     }
 
     if (this.capital.length === 0 && this.score === this.highScore) {
-      this.message = `You matched the High Score! Congrats, ${this.name}`;
+      this.message = `Matched the High Score! Congrats, ${this.name}`;
     }
   }
 
@@ -359,43 +379,6 @@ class App {
     this.population.splice(0, 1);
     this.capital.splice(0, 1);
   }
-
-  // (WORKS!!) Takes in the API data and gets 10 random countries/states
-  // getGameData(apiData, stateData) {
-  //   //filter out any countries with no capitals or populations below one million!
-  //   const gameType = this.gameType;
-
-  //   let data = apiData
-  //     .filter(
-  //       (country) =>
-  //         country.population >= 5000000 &&
-  //         country.hasOwnProperty("capital") &&
-  //         country.hasOwnProperty("flags")
-  //     )
-  //     .filter((data) => data.capital[0].split(" ").length === 1);
-
-  //   // Array of index numbers
-  //   let numbers = Array.from(Array(data.length).keys());
-  //   const randomNumbers = [];
-
-  //   // Array of 10 random index numbers
-  //   for (let j = 1; j <= 10; j++) {
-  //     let randomNumber = Math.trunc(Math.random() * numbers.length);
-  //     randomNumbers.push(numbers[randomNumber]);
-  //     numbers.splice(randomNumber, 1);
-  //   }
-
-  //   //Selects the 10 countries based on the random index and get their data
-  //   randomNumbers.forEach((num) => {
-  //     this.country.push(data[num].name.common);
-  //     //Some capitals have accents, replace them!
-  //     this.capital.push(
-  //       data[num].capital[0].normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-  //     );
-  //     this.population.push(Math.round(data[num].population / 1000000));
-  //     this.flagImg.push(data[num].flags.png);
-  //   });
-  // }
 
   getGameData(apiData, stateData) {
     {
@@ -508,21 +491,24 @@ class App {
     } else {
       // Game is over, reset all fields and hide game area
 
-      this.renderHTML();
+      this.setMessage();
+
+      this.setEndingImage();
 
       this.setHighScore();
 
       this.resetGameFields();
 
-      // Hide button to reduce madness
-      submitBtn.classList.add("hidden");
+      // Hide the guess container
+      guessContainer.classList.add("hidden");
 
       //Waits 5 seconds before going back to title screen
       const stayOnPage = setTimeout(() => {
         this.scrollUp();
         this.hideGameArea();
         this.setLoadingImage();
-      }, 10000);
+        guessContainer.classList.remove("hidden");
+      }, 3000);
     }
   }
 

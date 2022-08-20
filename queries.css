@@ -3,7 +3,77 @@
 
 /* Below 600px (mobile) */
 
-@media (max-width: 38em) {
+@media (max-width: 25em) {
+  .right-container {
+    grid-row: 3;
+    grid-column: 1;
+    margin-right: 0em;
+    margin-left: 0.9em;
+    padding-left: 2em;
+  }
+
+  .title-container {
+    height: 25em;
+    width: 50em;
+    border-radius: 50em 50em 0.3em 0.3em;
+  }
+
+  .states {
+    top: 25.5em;
+    left: 25.2em;
+    height: 25em;
+    width: 25em;
+    background-position: 0em 6rem;
+  }
+
+  .title-text {
+    font-size: 5em;
+  }
+
+  .choice {
+    font-size: 1.8em;
+  }
+
+  .countries {
+    top: 25.5rem;
+    right: 25rem;
+    height: 25rem;
+    width: 25rem;
+    background-position: -5rem 7rem;
+  }
+
+  .countries--text {
+    font-size: 4.5em;
+    padding-top: 0rem;
+  }
+
+  .states--text {
+    font-size: 4.5em;
+    padding-top: 0rem;
+  }
+
+  html {
+    font-size: 35%;
+    zoom: 1;
+  }
+
+  .main {
+    grid-template-columns: repeat(1, 1fr);
+    height: 100%;
+    grid-template-rows: 2fr 1.5fr 1.5fr;
+    row-gap: 0rem;
+  }
+
+  .modal-content {
+    width: 95%; /* Could be more or less, depending on screen size */
+  }
+
+  body {
+    height: 200rem;
+  }
+}
+
+@media (min-width: 25em) and (max-width: 38em) {
   .right-container {
     grid-row: 3;
     grid-column: 1;

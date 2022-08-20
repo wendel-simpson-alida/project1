@@ -3,7 +3,7 @@
 
 /* Below 600px (mobile) */
 
-@media (max-width: 25em) {
+@media only screen and (max-width: 25em) {
   .right-container {
     grid-row: 3;
     grid-column: 1;
@@ -72,7 +72,7 @@
   }
 }
 
-@media (min-width: 25em) and (max-width: 38em) {
+@media only screen and (min-width: 25em) and (max-width: 38em) {
   .right-container {
     grid-row: 3;
     grid-column: 1;
@@ -143,25 +143,25 @@
 
 /* Smaller laptops and small viewing areas (between 600 and 1200px)*/
 
-@media (min-width: 38em) and (max-width: 44em) {
+@media only screen and (min-width: 38em) and (max-width: 44em) {
   html {
     font-size: 35%;
   }
 }
 
-@media (min-width: 44em) and (max-width: 50em) {
+@media only screen and (min-width: 44em) and (max-width: 50em) {
   html {
     font-size: 40%;
   }
 }
 
-@media (min-width: 50em) and (max-width: 55em) {
+@media only screen and (min-width: 50em) and (max-width: 55em) {
   html {
     font-size: 45%;
   }
 }
 
-@media (min-width: 55em) and (max-width: 62em) {
+@media only screen and (min-width: 55em) and (max-width: 62em) {
   html {
     font-size: 50%;
   }

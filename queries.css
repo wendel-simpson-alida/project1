@@ -8,8 +8,8 @@
     grid-row: 3;
     grid-column: 1;
     margin-right: 0em;
-    margin-left: 0.9em;
-    padding-left: ;
+    margin-left: 2em;
+    padding-left: 2em;
   }
 }
 
@@ -69,7 +69,7 @@
 
 @media (max-width: 38em) {
   html {
-    font-size: 40%;
+    font-size: 35%;
   }
 }
 

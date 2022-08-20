@@ -65,6 +65,7 @@ body {
   position: relative;
   display: flex;
   justify-content: center;
+  /* display: none; */
 }
 
 .title-container {
